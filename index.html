@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLife Gym - Your Fitness Partner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-minimal {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-minimal:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .promo-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .payment-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-minimal {
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+        #logo{
+            background: url(profile.jpg);
+            background-position:center ;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+         #hero-logo{
+            background: url(profile.jpg);
+            background-position:center ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+        #localtion{
+            background-image: url(location.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full smooth-scroll">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav id="navbar" class="fixed w-full z-50 nav-minimal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+       <div id="logo" class="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+       </div>
+       <div>
+        <h1 id="gym-name" class="text-xl sm:text-2xl font-bold">Jovan Fitness </h1>
+        <p id="gym-tagline" class="text-xs opacity-80">Your Fitness Partner</p>
+       </div>
+      </div>
+      <div class="hidden md:flex items-center space-x-6"><a href="#home" class="font-medium hover:opacity-70 transition-opacity">Home</a> <a href="#promo" class="font-medium hover:opacity-70 transition-opacity">Promo</a> <a href="#gallery" class="font-medium hover:opacity-70 transition-opacity">Gallery</a> <a href="#testimonials" class="font-medium hover:opacity-70 transition-opacity">Reviews</a> <a href="#contact" class="font-medium hover:opacity-70 transition-opacity">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+      <div class="flex flex-col space-y-2"><a href="#home" class="py-2 font-medium hover:opacity-70 transition-opacity">Home</a> <a href="#promo" class="py-2 font-medium hover:opacity-70 transition-opacity">Promo</a> <a href="#gallery" class="py-2 font-medium hover:opacity-70 transition-opacity">Gallery</a> <a href="#testimonials" class="py-2 font-medium hover:opacity-70 transition-opacity">Reviews</a> <a href="#contact" class="py-2 font-medium hover:opacity-70 transition-opacity">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto text-center">
+     <div class="mb-8">
+      <div id="hero-logo" class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-2xl shadow-2xl flex items-center justify-center mb-6">
+      </div>
+     </div>
+     <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-6">Transform Your<br><span id="hero-highlight" class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Body &amp; Mind</span></h1>
+     <p class="text-lg sm:text-xl md:text-2xl mb-8 opacity-80 max-w-3xl mx-auto">Achieve your fitness goals with state-of-the-art equipment and expert guidance</p><a href="#promo" id="hero-cta" class="inline-block px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"> View Promos </a>
+    </div>
+   </section><!-- Features Section -->
+   <section class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12">Why Choose Us?</h2>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div class="card-minimal p-6 rounded-2xl text-center">
+       <div class="feature-icon w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-2">5AM-12AM Access</h3>
+       <p class="opacity-70">Train anytime that fits your schedule</p>
+      </div>
+      <div class="card-minimal p-6 rounded-2xl text-center">
+       <div class="feature-icon w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-2">Modern Equipment</h3>
+       <p class="opacity-70">Latest fitness technology and machines</p>
+      </div>
+      <div class="card-minimal p-6 rounded-2xl text-center">
+       <div class="feature-icon w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-2">Safe Facilities</h3>
+       <p class="opacity-70">High-quality equipment maintained for your safety.</p>
+      </div>
+      <div class="card-minimal p-6 rounded-2xl text-center">
+       <div class="feature-icon w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-2">Affordable Rates</h3>
+       <p class="opacity-70">Budget-friendly membership plans</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Promo Section -->
+   <section id="promo" class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Limited Time Offers!</h2>
+      <p class="text-lg sm:text-xl opacity-80">Start your fitness journey today with our amazing deals</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 sm:gap-8"><!-- Main Promo -->
+      <div class="promo-card rounded-3xl p-8 text-white text-center shadow-2xl md:col-span-2">
+       <div class="relative z-10">
+        <div class="inline-block px-4 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold mb-4">
+         🔥 SPECIAL PROMO
+        </div>
+        <h3 id="promo-title" class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">TRY US OUT!</h3>
+        <div class="mb-6"><span id="promo-price" class="text-6xl sm:text-7xl md:text-8xl font-bold">₱100</span>
+         <div id="promo-duration" class="text-2xl sm:text-3xl font-semibold mt-2">
+          for 3 Days
+         </div>
+        </div>
+        <p class="text-lg sm:text-xl mb-6 opacity-90">Full access to all gym facilities and equipment</p><a href="#contact" class="inline-block px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all duration-300 hover:scale-105"> Sign Up Now </a>
+       </div>
+      </div><!-- Additional Promos -->
+      <div class="space-y-6">
+       <div class="card-minimal rounded-2xl p-6">
+        <div class="text-sm font-semibold opacity-70 mb-2">
+         MONTHLY PLAN
+        </div>
+        <div class="text-4xl font-bold mb-2">
+         ₱600
+        </div>
+        <p class="opacity-70 mb-4">Unlimited gym access for 1 month</p>
+        <ul class="space-y-2 text-sm">
+         <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg> 5AM-12AM Access</li>
+         <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg> Members Only</li>
+        </ul>
+       </div>
+       <div class="card-minimal rounded-2xl p-6">
+        <div class="text-sm font-semibold opacity-70 mb-2">
+         MONTHLY PLAN
+        </div>
+        <div class="text-4xl font-bold mb-2">
+         ₱800
+        </div>
+        <p class="opacity-70 mb-4">Unlimited gym access for 1 month</p>
+        <ul class="space-y-2 text-sm">
+         <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>  5AM-12AM Access</li>
+         <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg> For Non-Members</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Facility</h2>
+      <p class="text-lg sm:text-xl opacity-80">State-of-the-art equipment and clean environment</p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n1.jpg')]">
+   ...
+</div>
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n2.jpg')]">
+   ...
+</div>
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n3.jpg')]">
+   ...
+</div>
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n4.jpg')]">
+   ...
+</div>
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n5.jpg')]">
+   ...
+</div>
+      <div class="gallery-item h-64 sm:h-80 flex items-center justify-center bg-cover bg-center bg-[url('n6.jpg')]">
+   ...
+</div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section id="testimonials" class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Ano Ang Sabi Nila?</h2>
+      <p class="text-lg sm:text-xl opacity-80">Real feedback from our satisfied members</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+      <div class="card-minimal rounded-2xl p-6 sm:p-8">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4">
+         <svg class="w-8 h-8 opacity-70" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-bold">Juan dela Cruz</h4>
+         <div class="flex text-yellow-400">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="opacity-80 italic">"Sobrang sulit ng membership! Malinis at kumpleto ang equipment. Mababait pa ang mga trainers. Highly recommended!"</p>
+      </div>
+      <div class="card-minimal rounded-2xl p-6 sm:p-8">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4">
+         <svg class="w-8 h-8 opacity-70" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-bold">Maria Santos</h4>
+         <div class="flex text-yellow-400">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="opacity-80 italic">"Best gym sa area! Abot-kaya ang bayad at accessible 24/7. 3 months palang ako dito, kita na results!"</p>
+      </div>
+      <div class="card-minimal rounded-2xl p-6 sm:p-8">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4">
+         <svg class="w-8 h-8 opacity-70" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-bold">Carlo Reyes</h4>
+         <div class="flex text-yellow-400">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="opacity-80 italic">"Grabe yung transformation ko! Thank you sa mga trainers na tumulong sa akin. Worth it talaga ang 3-day trial!"</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Location & Contact Section -->
+   <section id="contact" class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Visit Us</h2>
+      <p class="text-lg sm:text-xl opacity-80">Come and see our facility</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 sm:gap-12"><!-- Map -->
+      <div id="localtion"  class="card-minimal rounded-2xl overflow-hidden h-96 flex items-center justify-center">
+       <div class="text-center p-8">
+       </div>
+      </div><!-- Contact Info -->
+      <div class="space-y-6">
+       <div class="card-minimal rounded-2xl p-6">
+        <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+        <div class="space-y-4">
+         <div class="flex items-start">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+           </svg>
+          </div>
+          <div>
+           <p class="font-semibold mb-1">Address</p>
+           <p id="gym-address" class="opacity-70">Tatlong Hari streest, Santa Rosa, Laguna</p>
+          </div>
+         </div>
+         <div class="flex items-start">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+           </svg>
+          </div>
+          <div>
+           <p class="font-semibold mb-1">Phone</p>
+           <p id="phone-number" class="opacity-70"></p>
+          </div>
+         </div>
+         <div class="flex items-start">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+           </svg>
+          </div>
+         </div>
+         <div class="flex items-start">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+           </svg>
+          </div>
+          <div>
+           <p class="font-semibold mb-1">Hours</p>
+           <p class="opacity-70">Open 19Hours</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Contact Form -->
+       <div class="card-minimal rounded-2xl p-6">
+        <h3 class="text-xl font-bold mb-4">Send Message</h3>
+        <form id="contact-form" class="space-y-4">
+         <div><label for="name" class="block text-sm font-semibold mb-2">Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-all">
+         </div>
+         <div><label for="email" class="block text-sm font-semibold mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-all">
+         </div>
+         <div><label for="message" class="block text-sm font-semibold mb-2">Message</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-all"></textarea>
+         </div><button type="submit" class="w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"> Send Message </button>
+         <div id="form-message" class="hidden p-4 rounded-xl text-center font-semibold"></div>
+        </form>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Social Media & Payment Section -->
+   <section class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+     <div class="card-minimal rounded-3xl p-8 sm:p-12 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Connect With Us</h2>
+      <p class="text-lg opacity-80 mb-8">Follow us on social media and easy payment options</p>
+      <div class="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-8"><!-- Facebook --> <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="payment-icon card-minimal p-6 rounded-2xl hover:shadow-lg transition-all">
+        <svg class="w-12 h-12 mx-auto mb-3" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg><p class="font-semibold mb-1">Facebook</p><p id="facebook-page" class="text-sm opacity-70">Jovan Tararide </p></a> <!-- YouTube --> <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="payment-icon card-minimal p-6 rounded-2xl hover:shadow-lg transition-all">
+        <svg class="w-12 h-12 mx-auto mb-3" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg><p class="font-semibold mb-1">YouTube</p><p id="youtube-channel" class="text-sm opacity-70">Comming Soon</p></a> <!-- GCash -->
+       <div class="payment-icon card-minimal p-6 rounded-2xl">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center">
+         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
+        <p class="font-semibold mb-1">GCash</p>
+        <p id="gcash-number" class="text-sm opacity-70">0967 931 4390</p>
+       </div>
+      </div>
+      <div class="pt-6 border-t-2">
+       <p class="opacity-70">💳 We accept: Cash, GCash</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12 px-4 sm:px-6 border-t-2">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div>
+       <h3 class="text-xl font-bold mb-4">Jovan Fitness</h3>
+       <p class="opacity-70">Your partner in achieving a healthier lifestyle</p>
+      </div>
+      <div>
+       <h4 class="font-bold mb-4">Quick Links</h4>
+       <ul class="space-y-2 opacity-70">
+        <li><a href="#home" class="hover:opacity-100 transition-opacity">Home</a></li>
+        <li><a href="#promo" class="hover:opacity-100 transition-opacity">Promos</a></li>
+        <li><a href="#gallery" class="hover:opacity-100 transition-opacity">Gallery</a></li>
+        <li><a href="#contact" class="hover:opacity-100 transition-opacity">Contact</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-bold mb-4">Services</h4>
+       <ul class="space-y-2 opacity-70">
+        <li>Group Classes</li>
+        <li>19Hours Gym Access</li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-bold mb-4">Hours</h4>
+       <ul class="space-y-2 opacity-70">
+        <li>Monday - Sunday</li>
+        <li>Open 19 Hours</li>
+        <li>Staff: 5AM - 12AM</li>
+       </ul>
+      </div>
+     </div>
+     <div class="text-center pt-8 border-t-2 opacity-70">
+      <p>© 2025 Jovan Fitness. All rights reserved.</p>
+      <p>Developer/Designer: Erick Jasper Vidal</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: '#ffffff',
+            primary_color: '#667eea',
+            surface_color: '#f8f9fa',
+            text_color: '#1a202c',
+            accent_color: '#764ba2',
+            gym_name: 'FITLIFE GYM',
+            gym_tagline: 'Your Fitness Partner',
+            promo_title: 'TRY US OUT!',
+            promo_price: '₱100',
+            promo_duration: 'for 3 Days',
+            gym_address: '123 Fitness Street, Barangay San Antonio, Manila City, Metro Manila 1000',
+            phone_number: '0967 931 4390',
+            email_address: 'N/A for now',
+            facebook_page: 'Jovan Tararide',
+            youtube_channel: 'Comming Soon',
+            gcash_number: '0967 931 4390'
+        };
+
+        async function onConfigChange(config) {
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+
+            document.body.style.backgroundColor = bgColor;
+            document.body.style.color = textColor;
+
+            const navbar = document.getElementById('navbar');
+            navbar.style.backgroundColor = `${bgColor}f0`;
+            navbar.style.color = textColor;
+
+            const logo = document.getElementById('logo');
+            logo.style.backgroundColor = primaryColor;
+            logo.style.color = '#ffffff';
+
+            ///jsdhhshdj
+            document.getElementById('gym-name').style.color = textColor;
+            
+            document.getElementById('gym-tagline').textContent = config.gym_tagline || defaultConfig.gym_tagline;
+            document.getElementById('gym-tagline').style.color = textColor;
+
+            const heroLogo = document.getElementById('hero-logo');
+            heroLogo.style.backgroundColor = primaryColor;
+            heroLogo.style.color = '#ffffff';
+
+            const heroCta = document.getElementById('hero-cta');
+            heroCta.style.backgroundColor = primaryColor;
+            heroCta.style.color = '#ffffff';
+
+            document.querySelectorAll('.card-minimal').forEach(card => {
+                card.style.backgroundColor = surfaceColor;
+                card.style.color = textColor;
+            });
+
+            document.querySelectorAll('.feature-icon').forEach(icon => {
+                icon.style.backgroundColor = `${primaryColor}15`;
+                icon.style.color = primaryColor;
+            });
+
+            document.getElementById('promo-title').textContent = config.promo_title || defaultConfig.promo_title;
+            document.getElementById('promo-price').textContent = config.promo_price || defaultConfig.promo_price;
+            document.getElementById('promo-duration').textContent = config.promo_duration || defaultConfig.promo_duration;
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.style.backgroundColor = surfaceColor;
+                const svg = item.querySelector('svg');
+                if (svg) svg.style.color = textColor;
+            });
+
+            document.getElementById('phone-number').textContent = config.phone_number || defaultConfig.phone_number;
+            document.getElementById('email-address').textContent = config.email_address || defaultConfig.email_address;
+
+            document.getElementById('facebook-page').textContent = config.facebook_page || defaultConfig.facebook_page;
+            document.getElementById('youtube-channel').textContent = config.youtube_channel || defaultConfig.youtube_channel;
+            document.getElementById('gcash-number').textContent = config.gcash_number || defaultConfig.gcash_number;
+
+            const contactInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
+            contactInputs.forEach(input => {
+                input.style.backgroundColor = bgColor;
+                input.style.color = textColor;
+                input.style.borderColor = `${textColor}30`;
+            });
+
+            const contactSubmit = document.querySelector('#contact-form button[type="submit"]');
+            contactSubmit.style.backgroundColor = primaryColor;
+            contactSubmit.style.color = '#ffffff';
+
+            const footer = document.querySelector('footer');
+            footer.style.backgroundColor = surfaceColor;
+            footer.style.color = textColor;
+            footer.style.borderColor = `${textColor}20`;
+
+            document.querySelectorAll('.payment-icon .w-12').forEach(icon => {
+                icon.style.backgroundColor = `${primaryColor}15`;
+                icon.style.color = primaryColor;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            config.primary_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            config.accent_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ['gym_name', config.gym_name || defaultConfig.gym_name],
+                ['gym_tagline', config.gym_tagline || defaultConfig.gym_tagline],
+                ['promo_title', config.promo_title || defaultConfig.promo_title],
+                ['promo_price', config.promo_price || defaultConfig.promo_price],
+                ['promo_duration', config.promo_duration || defaultConfig.promo_duration],
+                ['gym_address', config.gym_address || defaultConfig.gym_address],
+                ['phone_number', config.phone_number || defaultConfig.phone_number],
+                ['email_address', config.email_address || defaultConfig.email_address],
+                ['facebook_page', config.facebook_page || defaultConfig.facebook_page],
+                ['youtube_channel', config.youtube_channel || defaultConfig.youtube_channel],
+                ['gcash_number', config.gcash_number || defaultConfig.gcash_number]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('form-message');
+            const primaryColor = window.elementSdk ? 
+                window.elementSdk.config.primary_color || defaultConfig.primary_color : 
+                defaultConfig.primary_color;
+            
+            formMessage.textContent = 'Salamat sa iyong mensahe! Makikipag-ugnayan kami sa iyo!';
+            formMessage.style.backgroundColor = `${primaryColor}20`;
+            formMessage.style.color = window.elementSdk ? 
+                window.elementSdk.config.text_color || defaultConfig.text_color : 
+                defaultConfig.text_color;
+            formMessage.classList.remove('hidden');
+            
+            e.target.reset();
+            
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        onConfigChange(defaultConfig);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b151129569010a4',t:'MTc2NjI5NTg2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
